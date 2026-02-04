@@ -1,0 +1,19 @@
+{
+  "description": "UI5 Web Components For Vue",
+  "author": "SAP SE (https://www.sap.com)",
+  "license": "Apache-2.0",
+  "private": true,
+  "keywords": [
+    "openui5",
+    "sapui5",
+    "ui5"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm -w lib run start && npm -w app run start",
+    "build": "npm -w lib run build && npm -w app run build",
+    "ci:releasebuild": "npm -w lib run build"
+  },
+  "workspaces": ["app", "lib"]
+}

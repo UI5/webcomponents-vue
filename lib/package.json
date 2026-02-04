@@ -1,0 +1,42 @@
+{
+    "name": "@ui5/webcomponents-vue",
+    "version": "0.7.0",
+    "description": "UI5 Web Components: webcomponents.vue",
+    "type": "module",
+    "author": "SAP SE (https://www.sap.com)",
+    "license": "Apache-2.0",
+    "keywords": [
+      "openui5",
+      "sapui5",
+      "ui5"
+    ],
+    "main": "./dist/createComponent.js",
+    "types": "./dist/createComponent.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/createComponent.d.ts",
+        "default": "./dist/createComponent.js"
+      },
+      "./dist/*.js": {
+        "types": "./dist/*.d.ts",
+        "default": "./dist/*.js"
+      },
+      "./src/*": "./src/*"
+    },
+    "scripts": {
+        "start": "echo Building lib... && npm run build",
+        "build": "tsc"
+    },
+    "dependencies": {
+      "vue": "^3.5.27",
+      "@ui5/webcomponents-base": "^2.18.0"
+    },
+    "devDependencies": {
+      "typescript": "^5.9.3"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/UI5/webcomponents-vue.git",
+      "directory": "lib"
+    }
+}

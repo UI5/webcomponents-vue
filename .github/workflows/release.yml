@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 0.7.1)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+            token: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
+            fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: npm install
+        
+      - name: Build
+        run: npm run ci:releasebuild
+
+      - name: Configure Git
+        run: |
+            git config user.name "${{ secrets.UI5_WEBCOMP_BOT_NAME }}"
+            git config user.email "${{ secrets.UI5_WEBCOMP_BOT_EMAIL }}"
+
+      - name: Update Version
+        working-directory: ./lib
+        run: |
+            npm version ${{ inputs.version }} --no-git-tag-version
+
+      - name: Generate Changelog
+        run: |
+            npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0
+
+      - name: Commit Changes
+        run: |
+            git add CHANGELOG.md
+            git add lib/package.json
+            git commit -m "chore: release v${{ inputs.version }}"
+            git tag v${{ inputs.version }}
+            git push origin main --tags
+
+      - name: Publish to NPM
+        working-directory: ./lib
+        run: npm publish --provenance --access public
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
+        with:
+          tag_name: v${{ inputs.version }}
+          release_name: Release v${{ inputs.version }}
+          draft: false
+          prerelease: false

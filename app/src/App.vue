@@ -10,12 +10,15 @@
 	import Input_ from "@ui5/webcomponents/dist/Input.js";
 	import MessageStrip_ from "@ui5/webcomponents/dist/MessageStrip.js";
 	import Title_ from "@ui5/webcomponents/dist/Title.js";
+	import DatePicker_ from "@ui5/webcomponents/dist/DatePicker.js";
+	import { Ui5DatePicker } from "@ui5/webcomponents-vue/components";
 
 	// wrappers
 	const Avatar = createComponent(Avatar_);
 	const Bar = createComponent(Bar_);
 	const Button = createComponent(Button_);
 	const Dialog = createComponent(Dialog_);
+	const DatePicker = createComponent(DatePicker_, { prop: "value", event: "change" });
 	const DialogWithVModel = createComponent(Dialog_, { prop: "open", event: "close" });
 	const Input = createComponent(Input_);
 	const MessageStrip = createComponent(MessageStrip_);
@@ -23,6 +26,7 @@
 
 	const dialogRef = ref();
 	const inpValue = ref("");
+	const dateValue = ref("1995-03-31");
 	const isDialogOpen1 = ref(false);
 	const isDialogOpen2 = ref(false);
 
@@ -37,6 +41,7 @@
   
 <template>
 		<div class="container">
+			<br><br>
 			<Bar>
 				<template #startContent>
 					<Button design="Emphasized">Start</Button>
@@ -52,6 +57,9 @@
 			<Input v-model="inpValue" placeholder="Start typing..." />
 			<!-- <ui5-input :value="inpValue" @input="onInput" placeholder="Start typing..."> -->
 			<Input :value="inpValue" @input="onInput" placeholder="Start typing..."/>
+
+			<Ui5DatePicker v-model="dateValue" valueFormat="YYYY-m-d" />
+			<DatePicker v-model="dateValue" valueFormat="YYYY-m-d" />
 			<br><br>
 
 			<!-- One-way binding "open" prop + "close" event -->
@@ -75,6 +83,6 @@
 
 			<Button @click="isDialogOpen2 = true" design="Negative">Open Dialog 2</Button>
 
-			<pre>Model : { value: {{ inpValue || `""`}}; isDialogOpen1: {{ isDialogOpen1 }};  isDialogOpen2: {{ isDialogOpen2 }};}</pre>
+			<pre>Model : { value: {{ inpValue || `""`}}; isDialogOpen1: {{ isDialogOpen1 }};  isDialogOpen2: {{ isDialogOpen2 }}; dateValue: {{ dateValue }}}</pre>
 		</div>
 </template>

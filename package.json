@@ -12,8 +12,17 @@
   "main": "index.js",
   "scripts": {
     "start": "npm -w lib run start && npm -w app run start",
+    "dev": "npm-run-all --parallel dev:lib dev:app",
+    "dev:lib": "npm -w lib run dev",
+    "dev:app": "npm -w app run dev",
     "build": "npm -w lib run build && npm -w app run build",
+    "test": "npm -w lib run test && npm -w app run test",
+    "lint": "npm -w lib run lint",
+    "lint:fix": "npm -w lib run lint:fix",
     "ci:releasebuild": "npm -w lib run build"
   },
-  "workspaces": ["app", "lib"]
+  "workspaces": ["app", "lib"],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
 }

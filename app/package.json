@@ -16,7 +16,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "@ui5/webcomponents": "^2.18.0",
+    "@ui5/webcomponents": "^2.19.0",
     "lib": "*",
     "vue": "^3.5.27"
   },

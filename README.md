@@ -1,4 +1,4 @@
-[![REUSE status](https://api.reuse.software/badge/github.com/UI5/webcomponents/vue)](https://api.reuse.software/info/github.com/UI5/webcomponents-vue)
+[![REUSE status](https://api.reuse.software/badge/github.com/UI5/webcomponents-vue)](https://api.reuse.software/info/github.com/UI5/webcomponents-vue)
 
 # UI5 Web Components for Vue
 
@@ -215,21 +215,25 @@ npm run lint:fix  # Auto-fix issues
 | `npm run lint` | Run ESLint |
 | `npm run lint:fix` | Auto-fix lint issues |
 
-## 📝 License
+## Requirements
 
-Apache-2.0
+- Node.js `^20.19.0 || >=22.12.0`
+- Vue `^3.5.27` or higher
 
-## 👥 Author
+## Contributing
 
-SAP SE (https://www.sap.com)
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests.
 
-## 🔗 Links
+## Code of Conduct
+
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](https://github.com/SAP/.github/blob/main/CODE_OF_CONDUCT.md) at all times.
+
+## Licensing
+
+This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+
+## Links
 
 - [Repository](https://github.com/UI5/webcomponents-vue)
 - [UI5 Web Components](https://sap.github.io/ui5-webcomponents/)
 - [Vue 3 Documentation](https://vuejs.org/)
-
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.

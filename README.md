@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/UI5/webcomponents/vue)](https://api.reuse.software/info/github.com/UI5/webcomponents-vue)
+
 # UI5 Web Components for Vue
 
 The project provides means for creating Vue components out of [UI5 Web Components](https://sap.github.io/ui5-webcomponents/), providing a seamless integration of pure web components in Vue.

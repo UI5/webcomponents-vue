@@ -108,6 +108,76 @@ Option A enables a unified experience where users see HTML, Vue, React, and Angu
 
 ---
 
+## Library Package Dependencies
+
+How the library `package.json` differs between options:
+
+### Option A (UI5 Monorepo)
+
+**This repo** (`@ui5/webcomponents-vue-base`) — only `createComponent`:
+```json
+{
+  "peerDependencies": {
+    "vue": "^3.5.27",
+    "@ui5/webcomponents-base": "^2.19.0"
+  }
+}
+```
+
+**UI5 monorepo** (`packages/vue`) — prebuilt wrappers:
+```json
+{
+  "dependencies": {
+    "@ui5/webcomponents-vue-base": "^2.19.0"
+  }
+}
+```
+- `vue` peer is inherited from `@ui5/webcomponents-vue-base`
+- `@ui5/webcomponents` is an internal workspace dependency (same monorepo)
+
+### Option B (This Repo)
+
+**This repo** (`@ui5/webcomponents-vue`) — everything in one package:
+```json
+{
+  "peerDependencies": {
+    "vue": "^3.5.27",
+    "@ui5/webcomponents-base": "^2.19.0",
+    "@ui5/webcomponents": "^2.19.0"
+  }
+}
+```
+
+---
+
+## App Packages Dependencies
+
+From the app developer's perspective, **both options provide the same experience**:
+
+```bash
+npm install @ui5/webcomponents @ui5/webcomponents-vue vue
+```
+
+```json
+{
+  "dependencies": {
+    "vue": "^3.5.27",
+    "@ui5/webcomponents": "^2.19.0",
+    "@ui5/webcomponents-vue": "^2.19.0"
+  }
+}
+```
+
+```ts
+import { Ui5Button, Ui5Input } from '@ui5/webcomponents-vue'
+```
+
+The difference is internal:
+- **Option A:** `@ui5/webcomponents-vue` comes from the UI5 monorepo, with `@ui5/webcomponents-vue-base` as a transitive dependency
+- **Option B:** `@ui5/webcomponents-vue` comes from this repo as a single package
+
+---
+
 ## Recommendation
 
 **Option A (UI5 monorepo)** — Prebuilt wrappers live alongside web components.

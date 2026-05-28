@@ -237,3 +237,4 @@ This project is licensed under the Apache Software License, version 2.0 except a
 - [Repository](https://github.com/UI5/webcomponents-vue)
 - [UI5 Web Components](https://sap.github.io/ui5-webcomponents/)
 - [Vue 3 Documentation](https://vuejs.org/)
+- [Contributing Guide](CONTRIBUTING.md)
